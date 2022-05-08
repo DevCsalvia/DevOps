@@ -1,0 +1,12 @@
+name: Git course
+on: [push]
+jobs:
+  Build-Chassis:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir build
+      - run: cd build
+      - run: touch car.txt
+      - run: echo "chassis" > car.txt
+      - run: echo "engine" > car.txt
+      - run: echo "wheels" > car.txt
