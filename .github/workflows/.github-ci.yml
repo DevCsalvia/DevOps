@@ -4,9 +4,22 @@ jobs:
   Build-Chassis:
     runs-on: ubuntu-latest
     steps:
+      - name: build the car
       - run: mkdir build
       - run: cd build
       - run: touch car.txt
       - run: echo "chassis" > car.txt
       - run: echo "engine" > car.txt
       - run: echo "wheels" > car.txt
+
+  Test-The-Car:
+    runs-on: ubuntu-latest
+    needs: [Build-Chassis]
+    steps:
+      - name: test the car
+      - run: -test -f build/car.txt
+      - run: cd build
+      - run: grep "chassis" car.txt
+      - run: grep "engine" car.txt
+      - run: grep "wheels" car.txt
+
