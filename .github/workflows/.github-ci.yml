@@ -5,12 +5,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: mkdir build
-      - run: cd build
-      - run: touch car.txt
-      - run: echo "chassis" >> car.txt
-      - run: echo "engine" >> car.txt
-      - run: echo "wheels" >> car.txt
-      - run: cat car.txt
+      - run: cd build touch car.txt
+      - run: cd build echo "chassis" >> car.txt
+      - run: cd build echo "engine" >> car.txt
+      - run: cd build echo "wheels" >> car.txt
+      - run: cd build cat car.txt
       - run: ls
       - name: Upload Build folder for Test-The-Car
         uses: actions/upload-artifact@v3
