@@ -10,10 +10,11 @@ jobs:
       - run: echo "chassis" > car.txt
       - run: echo "engine" > car.txt
       - run: echo "wheels" > car.txt
-      uses: actions/upload-artifact@v3
-      with:
-        name: build
-        path: build/
+      - name: Upload Build folder for Test-The-Car
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: build/
   Test-The-Car:
     runs-on: ubuntu-latest
     needs: [Build_The_Car]
