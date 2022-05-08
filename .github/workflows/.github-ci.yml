@@ -21,6 +21,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [Build_The_Car]
     steps:
+      - name: Download car.txt
+        uses: actions/download-artifact@v3
+        with:
+          name: build
       - run: ls
       - run: test -f build/car.txt
       - run: cd build
