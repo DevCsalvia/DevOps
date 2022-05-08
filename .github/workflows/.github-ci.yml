@@ -15,7 +15,7 @@ jobs:
       - name: Upload Build folder for Test-The-Car
         uses: actions/upload-artifact@v3
         with:
-          name: build
+          name: car
           path: car.txt
   Test-The-Car:
     runs-on: ubuntu-latest
@@ -24,7 +24,7 @@ jobs:
       - name: Download car.txt
         uses: actions/download-artifact@v3
         with:
-          name: build
+          name: car
       - run: ls
       - run: test -f car.txt
       - run: grep "chassis" car.txt
