@@ -27,7 +27,6 @@ jobs:
           name: build
       - run: ls
       - run: test -f car.txt
-      - run: cd build
       - run: grep "chassis" car.txt
       - run: grep "engine" car.txt
       - run: grep "wheels" car.txt
