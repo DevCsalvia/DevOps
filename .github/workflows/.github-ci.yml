@@ -1,0 +1,33 @@
+name: Git course
+on: [push]
+jobs:
+  Build_The_Car:
+    runs-on: ubuntu-latest
+    steps:
+      - run: mkdir build
+      - run: cd build
+      - run: touch car.txt
+      - run: echo "chassis" >> car.txt
+      - run: echo "engine" >> car.txt
+      - run: echo "wheels" >> car.txt
+      - run: cat car.txt
+      - run: ls
+      - name: Upload Build folder for Test-The-Car
+        uses: actions/upload-artifact@v3
+        with:
+          name: car
+          path: car.txt
+  Test-The-Car:
+    runs-on: ubuntu-latest
+    needs: [Build_The_Car]
+    steps:
+      - name: Download car.txt
+        uses: actions/download-artifact@v3
+        with:
+          name: car
+      - run: ls
+      - run: test -f car.txt
+      - run: grep "chassis" car.txt
+      - run: grep "engine" car.txt
+      - run: grep "wheels" car.txt
+
